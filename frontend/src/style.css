@@ -100,6 +100,23 @@ main {
   border-radius: 12px;
 }
 
+.board-info button {
+  margin-top: 8px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(92, 200, 255, 0.2);
+  color: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.board-info button:hover {
+  background: rgba(92, 200, 255, 0.35);
+  transform: translateY(-1px);
+}
+
 .side-panel {
   background: rgba(255, 255, 255, 0.08);
   padding: 16px;

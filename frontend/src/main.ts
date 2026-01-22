@@ -1,4 +1,5 @@
 import "./style.css";
+import { invoke } from "@tauri-apps/api/core";
 
 type Piece = "r" | "n" | "b" | "q" | "k" | "p" | "R" | "N" | "B" | "Q" | "K" | "P" | null;
 
@@ -55,6 +56,8 @@ app.innerHTML = `
         <div class="board" aria-label="Tabuleiro de xadrez"></div>
         <div class="board-info">
           <div><strong>Selecionada:</strong> <span id="selected-square">-</span></div>
+          <div><strong>Backend:</strong> <span id="backend-status">Sem conexão</span></div>
+          <button id="backend-button" type="button">Testar conexão com Rust</button>
           <div><strong>Próximo passo:</strong> mover peças e conectar ao engine Rust.</div>
         </div>
       </section>
@@ -72,16 +75,35 @@ app.innerHTML = `
 
 const boardElement = app.querySelector<HTMLDivElement>(".board");
 const selectedSquareEl = app.querySelector<HTMLSpanElement>("#selected-square");
+const backendStatusEl = app.querySelector<HTMLSpanElement>("#backend-status");
+const backendButton = app.querySelector<HTMLButtonElement>("#backend-button");
 
-if (!boardElement || !selectedSquareEl) {
+if (!boardElement || !selectedSquareEl || !backendStatusEl || !backendButton) {
   throw new Error("Componentes principais não encontrados.");
 }
 
 const selectedSquareLabel = selectedSquareEl as HTMLSpanElement;
+const backendStatusLabel = backendStatusEl as HTMLSpanElement;
+const backendButtonEl = backendButton as HTMLButtonElement;
 
 let selectedSquare: string | null = null;
 
 renderBoard(boardElement, initialBoard);
+
+backendButtonEl.addEventListener("click", async () => {
+  backendStatusLabel.textContent = "Conectando...";
+
+  try {
+    const response = await invoke<string>("greet", {
+      name: "Adriano",
+      square: selectedSquare
+    });
+    backendStatusLabel.textContent = response;
+  } catch (error) {
+    backendStatusLabel.textContent = "Falha ao conectar";
+    console.error(error);
+  }
+});
 
 function renderBoard(container: HTMLDivElement, state: BoardState) {
   container.innerHTML = "";
