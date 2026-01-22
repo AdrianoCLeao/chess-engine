@@ -1,15 +1,14 @@
 {
+  "productName": "Chess Engine",
+  "version": "0.1.0",
+  "identifier": "com.adriano.chessengine",
   "build": {
-    "beforeDevCommand": "npm --prefix ../frontend run dev",
-    "beforeBuildCommand": "npm --prefix ../frontend run build",
-    "devPath": "http://localhost:5173",
-    "distDir": "../frontend/dist"
+    "beforeDevCommand": "sh -c \"if [ -f frontend/package.json ]; then npm --prefix frontend run dev; elif [ -f ../frontend/package.json ]; then npm --prefix ../frontend run dev; elif [ -f package.json ]; then npm run dev; else echo 'frontend package.json não encontrado' && exit 1; fi\"",
+    "beforeBuildCommand": "sh -c \"if [ -f frontend/package.json ]; then npm --prefix frontend run build; elif [ -f ../frontend/package.json ]; then npm --prefix ../frontend run build; elif [ -f package.json ]; then npm run build; else echo 'frontend package.json não encontrado' && exit 1; fi\"",
+    "devUrl": "http://localhost:5173",
+    "frontendDist": "frontend/dist"
   },
-  "package": {
-    "productName": "Chess Engine",
-    "version": "0.1.0"
-  },
-  "tauri": {
+  "app": {
     "windows": [
       {
         "title": "Chess Engine",
@@ -21,5 +20,10 @@
     "security": {
       "csp": null
     }
+  },
+  "bundle": {
+    "icon": [
+      "icons/icon.svg"
+    ]
   }
 }
