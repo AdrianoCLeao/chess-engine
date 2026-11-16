@@ -6,6 +6,18 @@ Stack: **Tauri 2** (native window on Linux / macOS / Windows) · **Rust** engine
 
 > Code comments and module docs are in **English**. The UI is in **Portuguese**, with i18n hooks ready for more languages.
 
+## Screenshots
+
+Light theme (default):
+
+| Jogar | Treinador |
+| --- | --- |
+| ![Jogar](docs/screenshots/play-light.png) | ![Treinador](docs/screenshots/coach-light.png) |
+
+| Ajustes | Documentação |
+| --- | --- |
+| ![Ajustes](docs/screenshots/settings-light.png) | ![Documentação](docs/screenshots/docs-light.png) |
+
 ## Features
 
 1. Legal move validation (castling, en passant, promotion, check, mate, stalemate)
@@ -38,6 +50,7 @@ src-tauri/         # Rust engine + Tauri shell
   src/engine/      # board, movegen, eval, search, elo, analysis, coach
   src/i18n/        # explanation locales (pt today)
   src/api.rs       # Tauri commands
+docs/screenshots/  # README captures (light theme)
 Makefile           # local workflows
 ```
 
