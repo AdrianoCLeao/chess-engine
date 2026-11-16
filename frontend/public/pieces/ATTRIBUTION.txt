@@ -1,0 +1,16 @@
+Chess piece artwork
+===================
+
+Sets under this folder are copied from Lichess (lichess-org/lila):
+
+  - companion/  — Lichess "companion" piece set
+  - cburnett/   — CBurnett set (also used for the app icon knight)
+  - merida/     — Merida set (available, not active in UI)
+  - alpha/, companion sample files as needed
+
+Upstream source:
+  https://github.com/lichess-org/lila/tree/master/public/piece
+
+CBurnett artwork originates from Colin M. L. Burnett (Wikimedia Commons),
+typically licensed CC BY-SA 3.0. Other Lichess sets follow their upstream licenses.
+This project does not claim ownership of the piece artwork.
