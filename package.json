@@ -1,0 +1,15 @@
+{
+  "name": "chess-engine",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Complete chess engine desktop app (Tauri + Rust + TypeScript)",
+  "scripts": {
+    "dev": "tauri dev",
+    "frontend": "npm --prefix frontend run dev",
+    "typecheck": "npm --prefix frontend run typecheck",
+    "tauri": "tauri"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.0.0"
+  }
+}
